@@ -1,4 +1,4 @@
-import { NextPage } from 'next'; // Import the NextPage type
+import { FC } from 'react';
 
 interface IBook {
   id: number;
@@ -11,9 +11,15 @@ interface IBook {
   available: boolean;
 }
 
-// Define the Page component using the NextPage type
-const Page: NextPage<{ params: { id: string } }> = async ({ params }) => {
+// Correct typing for Next.js dynamic routes
+interface PageProps {
+  params: { id: string };
+}
+
+// Using FC (Function Component) for typing
+const Page: FC<PageProps> = async ({ params }) => {
   const { id } = params;
+
   const res = await fetch(`https://simple-books-api.glitch.me/books/${id}`);
   const data: IBook = await res.json();
   console.log(data);
