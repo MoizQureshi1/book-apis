@@ -6,7 +6,7 @@ export default async function Home (){
     id: number,
     name: string,
     type: string,
-    available: boolean
+    available: boolean,
   }
 
   const res = await fetch('https://simple-books-api.glitch.me/books')
